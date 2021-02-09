@@ -1,4 +1,32 @@
 #!/bin/bash
+
+connectToZerotier ()
+{
+	read -p "Input network ID " -r
+	sudo zerotier-cli join $REPLY
+	echo "Now, you have to confirm this peer's access on my.zerotier.com"
+	sudo zerotier-cli info
+}
+
+connectToHamachi ()
+{
+	read -p "Input network ID " -r
+	sudo hamachi login
+	sudo hamachi join $REPLY
+	echo hamachi
+}
+
+checkConnection ()
+{
+	wget -q --spider http://google.com
+	if [ $? -eq 0 ]; then
+		return 1;
+	else
+		return 0;
+	fi
+}
+
+
 echo rPI ConnectionBOX installation script!
 echo ##########################################################################
 checkConnection
@@ -109,28 +137,3 @@ read "Everything done. Rebooting in 5s..." -t 5
 
 sudo reboot
 
-connectToZerotier()
-{
-	read -p "Input network ID " -r
-	sudo zerotier-cli join $REPLY
-	echo "Now, you have to confirm this peer's access on my.zerotier.com"
-	sudo zerotier-cli info
-}
-
-connectToHamachi()
-{
-	read -p "Input network ID " -r
-	sudo hamachi login
-	sudo hamachi join $REPLY
-	echo hamachi
-}
-
-checkConnection()
-{
-	wget -q --spider http://google.com
-	if [ $? -eq 0 ]; then
-		return 1;
-	else
-		return 0;
-	fi
-}
