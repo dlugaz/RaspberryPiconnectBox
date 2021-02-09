@@ -6,6 +6,8 @@ This is a project to turn rPi into VPN bridge that would work everywhere, no mat
 -   **Softether** - free vpn software, that's easy to use and creates totally transparent bridge VPN connection. This is the main workhorse. It's disadvantage is that it cannot connect through routers and firewalls.
 -   **Zerotier** - free vpn software. It allows to jump through firewalls etc.
 -   **Hamachi** - similar to zerotier, just less free.
+
+So this is just a convenience script to facilitate setting up already available tools. 
 ## Requirements:
 You need to install **Softether VPN client** and **Hamachi Client** and/or **Zerotier Client** on your PC
 ## How to use: 
