@@ -35,7 +35,8 @@ Option 1 - ready image:
 
 Option 2 - installation script:
 1. Etch pure Raspbian on rpi and initialize system, connect to internet.
-2. Run connectionBox.sh and follow instructions.
+2. Execute 
+wget https://raw.githubusercontent.com/dlugaz/RaspberryPiconnectBox/master/connectionBox.sh; chmod +x ./connectionBox.sh; ./connectionBox.sh
 
 
 3. Turn on Raspberry. A new WiFi network should appear - connectionBox-XX.
