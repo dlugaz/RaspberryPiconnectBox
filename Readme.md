@@ -1,7 +1,7 @@
 # ConnectionBox with RaspberryPi
 
 ## What is it: 
-This is a project to turn rPi into VPN bridge that would work everywhere, no matter the connection, firewall etc. At the same time it should use free software and not generate any costs for the user. To accomplish this, there is a redundancy in VPN connections.
+This is a project to turn rPi into VPN bridge that would work everywhere, no matter the connection, firewall etc. At the same time it should use free software and not generate any costs for the user. This project started mainly to provide a reliable, cheap access to remote PLCs. To accomplish this, there is a redundancy in VPN connections.
 
 -   **Softether** - free vpn software, that's easy to use and creates totally transparent bridge VPN connection. This is the main workhorse. It's disadvantage is that it cannot connect through routers and firewalls.
 -   **Zerotier** - free vpn software. It allows to jump through firewalls etc.
