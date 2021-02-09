@@ -133,7 +133,7 @@ done
 
 sudo hostname connectionBox
 
-read "Everything done. Rebooting in 5s..." -t 5
+read -t 5 -p "Everything done. Rebooting in 5s..."
 
 sudo reboot
 
