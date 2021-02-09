@@ -9,7 +9,8 @@ This is a project to turn rPi into VPN bridge that would work everywhere, no mat
 
 So this is just a convenience script to facilitate setting up already available tools. 
 ## Requirements:
-You need to install **Softether VPN client** and **Hamachi Client** and/or **Zerotier Client** on your PC
+- RaspberryPi with Ethernet Port and WiFi 
+- You need to install **Softether VPN client** and **Hamachi Client** and/or **Zerotier Client** on your PC
 ## How to use: 
 If rPi has a connection, that has direct line to internet and it's own IP - then great, all you need is Softether. 
 Softether automatically generates dynamicdns address and azure gateway address. 
