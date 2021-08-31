@@ -26,7 +26,7 @@ checkConnection ()
 	fi
 }
 
-setupVPNServer ()
+setupVPNserver ()
 {
 
 	cd ~
