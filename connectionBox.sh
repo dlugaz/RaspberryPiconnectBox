@@ -52,15 +52,15 @@ setupVPNserver ()
 	
 	sudo /usr/local/vpnserver/vpnserver start
 	
-	
-	read -p "Enter Password for VPN Server Management " -r
+	echo "Enter Password for VPN Server Management "
+	read -s VPNPASSWORD
 	VPNPASSWORD=$REPLY
 	
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd ServerPasswordSet $VPNPASSWORD
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /PASSWORD:$VPNPASSWORD /cmd HubCreate VPN
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /PASSWORD:$VPNPASSWORD /cmd BridgeCreate VPN /DEVICE:eth0
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /PASSWORD:$VPNPASSWORD /Hub:VPN /cmd UserCreate
-	
+	VPNPASSWORD=""
 }
 
 changeHostname ()
