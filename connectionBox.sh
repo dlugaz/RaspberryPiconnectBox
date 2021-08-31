@@ -49,10 +49,10 @@ setupVPNServer ()
 	chmod +x /etc/init.d/vpnserver
 
 	sudo update-rc.d vpnserver defaults
-	sudo /usr/local/vpnserver/vpncmd localhost /cmd ServerPasswordSet
-	sudo /usr/local/vpnserver/vpncmd localhost /cmd HubCreate VPN
-	sudo /usr/local/vpnserver/vpncmd localhost /cmd BridgeCreate VPN /DEVICE:eth0
-	sudo /usr/local/vpnserver/vpncmd localhost /Hub:VPN /cmd UserCreate
+	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd ServerPasswordSet
+	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd HubCreate VPN
+	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd BridgeCreate VPN /DEVICE:eth0
+	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /Hub:VPN /cmd UserCreate
 	
 }
 
