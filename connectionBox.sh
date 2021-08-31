@@ -29,29 +29,30 @@ checkConnection ()
 setupVPNServer ()
 {
 
-cd ~
-wget https://github.com/dlugaz/RaspberryPiconnectBox/raw/master/InstalationFiles/softether-vpnserver-v4.34-9745-rtm-2020.04.05-linux-arm_eabi-32bit.tar.gz
-wget https://raw.githubusercontent.com/dlugaz/RaspberryPiconnectBox/master/vpnserver;
+	cd ~
+	wget https://github.com/dlugaz/RaspberryPiconnectBox/raw/master/InstalationFiles/softether-vpnserver-v4.34-9745-rtm-2020.04.05-linux-arm_eabi-32bit.tar.gz
+	wget https://raw.githubusercontent.com/dlugaz/RaspberryPiconnectBox/master/vpnserver;
 
-tar -xf softether-vpnserver-v4.34-9745-rtm-2020.04.05-linux-arm_eabi-32bit.tar.gz
+	tar -xf softether-vpnserver-v4.34-9745-rtm-2020.04.05-linux-arm_eabi-32bit.tar.gz
 
-cd vpnserver/
-sudo make
-cd ..
-rm -rf /usr/local/vpnserver
-mv vpnserver/ /usr/local/
-sudo mv vpnserver/ /usr/local/
-cd /usr/local/vpnserver/
+	cd vpnserver/
+	sudo make
+	cd ..
+	rm -rf /usr/local/vpnserver
+	mv vpnserver/ /usr/local/
+	sudo mv vpnserver/ /usr/local/
+	cd /usr/local/vpnserver/
 
-sudo chmod +x vpncmd vpnserver
+	sudo chmod +x vpncmd vpnserver
 
-sudo mv ~/vpnserver /etc/init.d/
-chmod +x /etc/init.d/vpnserver
+	sudo mv ~/vpnserver /etc/init.d/
+	chmod +x /etc/init.d/vpnserver
 
-sudo update-rc.d vpnserver defaults
-sudo /usr/local/vpnserver/vpncmd localhost /cmd ServerPasswordSet
-sudo /usr/local/vpnserver/vpncmd localhost /cmd HubCreate VPN
-sudo /usr/local/vpnserver/vpncmd localhost /cmd BridgeCreate VPN /DEVICE:eth0
+	sudo update-rc.d vpnserver defaults
+	sudo /usr/local/vpnserver/vpncmd localhost /cmd ServerPasswordSet
+	sudo /usr/local/vpnserver/vpncmd localhost /cmd HubCreate VPN
+	sudo /usr/local/vpnserver/vpncmd localhost /cmd BridgeCreate VPN /DEVICE:eth0
+	
 }
 
 echo rPI ConnectionBOX installation script!
