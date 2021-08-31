@@ -59,8 +59,8 @@ setupVPNServer ()
 changeHostname ()
 {
 	read -p "What's your new hostname?" -r
-	sudo hostname $REPLY
-	
+	echo $REPLY > ~/hostname
+	sudo mv ~/hostname /etc/	
 }
 
 
