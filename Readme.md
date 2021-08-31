@@ -35,24 +35,18 @@ Additionally, to facilitate using local WiFi networks, comitup is installed. If 
 
 ## Installation and configuration: 
 
-### Option 1 - ready image:
-
-1.  On a SD card etch **rpiVPN.gz** (for example with balenaEtcher)
-2.  Put the SD card into RaspberryPi.
-
-### Option 2 - installation script:
-
-1.  Etch pure RASPBIAN on rPi and initialize system, connect to internet.
+1.  Etch pure RASPBIAN on rPi and initialize system and SSH, connect to internet. 
+> To initialize SSH create empty file "ssh" on boot partition
     
-2.  Execute in terminal
+2.  Connect to rPI and execute in terminal
 	>  wget https://raw.githubusercontent.com/dlugaz/RaspberryPiconnectBox/master/connectionBox.sh; chmod +x ./connectionBox.sh; ./connectionBox.sh
+
+3. Follow the instructions.
     
 4.  Turn on Raspberry. A new WiFi network should appear - connectionBox-XX.
     
 5.  Connect to rPi via WiFi or Ethernet.
     
-6.  Use Softether configuration tool to configure VPN on rPi. Remember to setup a bridge with eth0 in the wizard!
+6.  Use Softether configuration tool to further configure/customize VPN on rPi. 
     
-7.  Connect with SSH to connect zerotier and/or hamachi
-Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.
 
