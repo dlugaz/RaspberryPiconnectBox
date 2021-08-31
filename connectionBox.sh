@@ -52,6 +52,10 @@ setupVPNserver ()
 	
 	sudo /usr/local/vpnserver/vpnserver start
 	
+	
+	read -p "Enter Password for VPN Server Management " -r
+	VPNPASSWORD=$REPLY
+	
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd ServerPasswordSet
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd HubCreate VPN
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd BridgeCreate VPN /DEVICE:eth0
@@ -109,7 +113,7 @@ curl -s https://install.zerotier.com | sudo bash
 
 
 while true; do
-    read -p "Would you like to connect to zerotier network?" yn
+    read -p "Would you like to connect to zerotier network? " yn
     case $yn in
         [Yy]* ) connectToZerotier; break;;
         [Nn]* ) break;;
@@ -118,7 +122,7 @@ while true; do
 done
 
 while true; do
-    read -p "Would you like to connect to hamachi network?" yn
+    read -p "Would you like to connect to hamachi network? " yn
     case $yn in
         [Yy]* ) connectToHamachi; break;;
         [Nn]* ) break;;
@@ -127,7 +131,7 @@ while true; do
 done
 
 while true; do
-    read -p "Would you like to change hostname?" yn
+    read -p "Would you like to change hostname? " yn
     case $yn in
         [Yy]* ) changeHostname; break;;
         [Nn]* ) break;;
