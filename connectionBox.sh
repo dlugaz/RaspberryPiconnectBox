@@ -56,6 +56,17 @@ setupVPNServer ()
 	
 }
 
+changeHostname ()
+{
+	read -p "What's your new hostname?" -r
+	sudo hostname $REPLY
+	
+}
+
+
+#############################################################################
+# Main
+#############################################################################
 echo rPI ConnectionBOX installation script!
 echo ##########################################################################
 checkConnection
@@ -100,7 +111,14 @@ while true; do
     esac
 done
 
-sudo hostname connectionBox
+while true; do
+    read -p "Would you like to change hostname?" yn
+    case $yn in
+        [Yy]* ) changeHostname; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
 read -t 5 -p "Everything done. Rebooting in 5s..."
 
