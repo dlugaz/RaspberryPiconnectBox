@@ -56,10 +56,10 @@ setupVPNserver ()
 	read -p "Enter Password for VPN Server Management " -r
 	VPNPASSWORD=$REPLY
 	
-	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd ServerPasswordSet
-	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd HubCreate VPN
-	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd BridgeCreate VPN /DEVICE:eth0
-	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /Hub:VPN /cmd UserCreate
+	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd ServerPasswordSet $VPNPASSWORD
+	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /PASSWORD:$VPNPASSWORD /cmd HubCreate VPN
+	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /PASSWORD:$VPNPASSWORD /cmd BridgeCreate VPN /DEVICE:eth0
+	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /PASSWORD:$VPNPASSWORD /Hub:VPN /cmd UserCreate
 	
 }
 
