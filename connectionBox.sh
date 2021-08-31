@@ -50,7 +50,7 @@ setupVPNserver ()
 
 	sudo update-rc.d vpnserver defaults
 	
-	/etc/init.d/vpnserver start
+	sudo /usr/local/vpnserver/vpnserver start
 	
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd ServerPasswordSet
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd HubCreate VPN
