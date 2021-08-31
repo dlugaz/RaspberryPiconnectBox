@@ -52,6 +52,7 @@ setupVPNServer ()
 	sudo /usr/local/vpnserver/vpncmd localhost /cmd ServerPasswordSet
 	sudo /usr/local/vpnserver/vpncmd localhost /cmd HubCreate VPN
 	sudo /usr/local/vpnserver/vpncmd localhost /cmd BridgeCreate VPN /DEVICE:eth0
+	sudo /usr/local/vpnserver/vpncmd localhost /Hub:VPN /cmd UserCreate
 	
 }
 
