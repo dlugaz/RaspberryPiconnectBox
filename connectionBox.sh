@@ -49,6 +49,9 @@ setupVPNserver ()
 	sudo chmod +x /etc/init.d/vpnserver
 
 	sudo update-rc.d vpnserver defaults
+	
+	/etc/init.d/vpnserver start
+	
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd ServerPasswordSet
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd HubCreate VPN
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd BridgeCreate VPN /DEVICE:eth0
