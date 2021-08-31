@@ -32,17 +32,17 @@ setupVPNServer ()
 cd ~
 wget https://github.com/dlugaz/RaspberryPiconnectBox/raw/master/InstalationFiles/softether-vpnserver-v4.34-9745-rtm-2020.04.05-linux-arm_eabi-32bit.tar.gz
 wget https://raw.githubusercontent.com/dlugaz/RaspberryPiconnectBox/master/vpnserver;
-ls
+
 tar -xf softether-vpnserver-v4.34-9745-rtm-2020.04.05-linux-arm_eabi-32bit.tar.gz
-ls
+
 cd vpnserver/
-ls
 sudo make
 cd ..
+rm -rf /usr/local/vpnserver
 mv vpnserver/ /usr/local/
 sudo mv vpnserver/ /usr/local/
 cd /usr/local/vpnserver/
-ls
+
 sudo chmod +x vpncmd vpnserver
 
 sudo mv ~/vpnserver /etc/init.d/
