@@ -63,13 +63,25 @@ changeHostname ()
 	sudo mv ~/hostname /etc/	
 }
 
+checkSudo()
+{
+	if [ id -u -ne 0 ]
+	  then echo "Please run as root"
+	  exit
+	fi
+}
+
 
 #############################################################################
 # Main
 #############################################################################
 echo rPI ConnectionBOX installation script!
 echo ##########################################################################
+
 checkConnection
+
+checkSudo
+
 if [ $? -eq 0 ]; then
 		echo "This script requires internet connection!"
 		exit
