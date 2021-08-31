@@ -26,6 +26,33 @@ checkConnection ()
 	fi
 }
 
+setupVPNServer ()
+{
+
+cd ~
+wget https://github.com/dlugaz/RaspberryPiconnectBox/raw/master/InstalationFiles/softether-vpnserver-v4.34-9745-rtm-2020.04.05-linux-arm_eabi-32bit.tar.gz
+wget https://raw.githubusercontent.com/dlugaz/RaspberryPiconnectBox/master/vpnserver;
+ls
+tar -xf softether-vpnserver-v4.34-9745-rtm-2020.04.05-linux-arm_eabi-32bit.tar.gz
+ls
+cd vpnserver/
+ls
+sudo make
+cd ..
+mv vpnserver/ /usr/local/
+sudo mv vpnserver/ /usr/local/
+cd /usr/local/vpnserver/
+ls
+sudo chmod +x vpncmd vpnserver
+
+sudo mv ~/vpnserver /etc/init.d/
+chmod +x /etc/init.d/vpnserver
+
+sudo update-rc.d vpnserver defaults
+sudo /usr/local/vpnserver/vpncmd localhost /cmd ServerPasswordSet
+sudo /usr/local/vpnserver/vpncmd localhost /cmd HubCreate VPN
+sudo /usr/local/vpnserver/vpncmd localhost /cmd BridgeCreate VPN /DEVICE:eth0
+}
 
 echo rPI ConnectionBOX installation script!
 echo ##########################################################################
@@ -45,70 +72,10 @@ sudo systemctl disable systemd-resolved
 echo "ap_name: connectionBox-<nn>" > comitup.conf
 sudo mv comitup.conf /etc/
 
-wget https://www.softether-download.com/files/softether/v4.34-9745-rtm-2020.04.05-tree/Linux/SoftEther_VPN_Server/32bit_-_ARM_EABI/softether-vpnserver-v4.34-9745-rtm-2020.04.05-linux-arm_eabi-32bit.tar.gz
-ls
-tar -xf softether-vpnserver-v4.34-9745-rtm-2020.04.05-linux-arm_eabi-32bit.tar.gz
-ls
-cd vpnserver/
-ls
-sudo make
-cd ..
-mv vpnserver/ /usr/local/
-sudo mv vpnserver/ /usr/local/
-cd /usr/local/vpnserver/
-ls
-sudo chmod +x vpncmd vpnserver
-
-touch /etc/init.d/vpnserver
-chmod +x /etc/init.d/vpnserver
-cat > /etc/init.d/vpnserver << EOF
-#!/bin/sh
-### BEGIN INIT INFO
-# Provides: softether-vpnserver
-# Required-Start: $network $remote_fs $syslog
-# Required-Stop: $network $remote_fs $syslog
-# Should-Start: network-manager
-# Should-Stop: network-manager
-# X-Start-Before: $x-display-manager gdm kdm xdm wdm ldm sdm nodm
-# X-Interactive: true
-# Default-Start: 2 3 4 5
-# Default-Stop: 0 1 6
-# Short-Description: SoftEther VPN service
-### END INIT INFO
-
-# chkconfig: 2345 99 01
-# description: SoftEther VPN Server
-DAEMON=/usr/local/vpnserver/vpnserver
-LOCK=/var/lock/vpnserver
-test -x $DAEMON || exit 0
-case "$1" in
-start)
-$DAEMON start
-touch $LOCK
-;;
-stop)
-$DAEMON stop
-rm $LOCK
-;;
-restart)
-$DAEMON stop
-sleep 3
-$DAEMON start
-;;
-*)
-echo "Usage: $0 {start|stop|restart}"
-exit 1
-esac
-exit 0
-EOF
-
-sudo update-rc.d vpnserver defaults
-sudo /usr/local/vpnserver/vpncmd localhost /cmd ServerPasswordSet
-sudo /usr/local/vpnserver/vpncmd localhost /cmd HubCreate VPN
-sudo /usr/local/vpnserver/vpncmd localhost /cmd BridgeCreate VPN /DEVICE:eth0
+setupVPNserver
 
 cd ~
-wget https://www.vpn.net/installers/logmein-hamachi_2.1.0.203-1_armhf.deb
+wget https://github.com/dlugaz/RaspberryPiconnectBox/raw/master/InstalationFiles/logmein-hamachi_2.1.0.203-1_armhf.deb
 sudo apt install ./logmein-hamachi_2.1.0.203-1_armhf.deb
 curl -s https://install.zerotier.com | sudo bash
 
