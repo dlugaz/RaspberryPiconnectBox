@@ -14,9 +14,13 @@ So this is just a convenience script to facilitate setting up already available 
 ## How to use: 
 If rPi has a connection, that has direct line to internet and it's own IP - then great, all you need is Softether. 
 Softether automatically generates dynamicdns address and azure gateway address. 
-Some disadvantage is that connection is totally transparent, so there's no way to change rPi settings or diagnose connection. 
+
+Some disadvantage is that connection is totally transparent (VPN server is invisible in the network), so there's no way to change rPi settings or diagnose connection. 
+
 **Dynamic DNS** allows you to connect if rPI has direct internet connection, but no static ip. 
+
 **Azure DNS** allows you to connect if there's no direct connection, but is slow as hell, so we can use it only in emergency. 
+
 The DDNS and Azure DNS addresses are available if you connect to rPI with **Softether Server Manager**. 
 To overcome the softether disadvantages there's a redundant connection through Hamachi and Zerotier. 
 Additionally, to facilitate using local WiFi networks, comitup is installed. If it doesn't find any known network, it creates accesspoint (SSID: connectionBox-XX). When connected to this AP, on [http://10.42.0.1](http://10.42.0.1) you will find website, that allows to easily connect to picked network.
