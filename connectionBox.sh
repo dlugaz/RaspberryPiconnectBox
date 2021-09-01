@@ -4,7 +4,10 @@ connectToZerotier ()
 {
 	read -p "Input network ID " -r
 	sudo zerotier-cli join $REPLY
+	echo "##########################################################################"
 	echo "Now, you have to confirm this peer's access on my.zerotier.com"
+	echo "##########################################################################"
+	sleep 5
 	sudo zerotier-cli info
 }
 
