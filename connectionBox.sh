@@ -104,6 +104,7 @@ setupZerotier ()
 echo "##########################################################################"
 echo "rPI ConnectionBOX installation script!"
 echo "##########################################################################"
+echo " "
 
 checkConnection
 
@@ -111,6 +112,7 @@ checkSudo
 
 while true; do
 	echo "##########################################################################"
+	echo " "
     read -p "Would you like to change password (recommended) " yn
     case $yn in
         [Yy]* ) passwd; break;;
@@ -129,9 +131,20 @@ setupVPNserver
 
 setupZerotier
 
+while true; do
+	echo "##########################################################################"
+	echo " "
+    read -p "Would you like to change hostname? " yn
+    case $yn in
+        [Yy]* ) changeHostname; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
 while true; do
     echo "##########################################################################"
+    echo " "
     read -p "Would you like to connect to zerotier network? " yn
     case $yn in
         [Yy]* ) connectToZerotier; break;;
@@ -142,6 +155,7 @@ done
 
 while true; do
 	echo "##########################################################################"
+	echo " "
     read -p "Would you like to connect to hamachi network? " yn
     case $yn in
         [Yy]* ) connectToHamachi; break;;
@@ -152,6 +166,7 @@ done
 
 while true; do
 	echo "##########################################################################"
+	echo " "
     read -p "Would you like to change hostname? " yn
     case $yn in
         [Yy]* ) changeHostname; break;;
@@ -159,6 +174,7 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
+
 
 echo "##########################################################################"
 read -t 5 -p "Everything done. Rebooting in 5s..."
