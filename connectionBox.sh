@@ -69,6 +69,13 @@ setupVPNserver ()
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /cmd ServerPasswordSet $VPNPASSWORD 
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /PASSWORD:$VPNPASSWORD /cmd HubCreate VPN /PASSWORD:$VPNPASSWORD
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /PASSWORD:$VPNPASSWORD /cmd BridgeCreate VPN /DEVICE:eth0
+	echo "##########################################################################"
+	echo "IMPORTANT! "
+	echo "##########################################################################"
+	echo "You are about to create user that will be used to connect to VPN"
+	echo "Remember the Username and Password"
+	echo "##########################################################################"
+	sleep 5
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /PASSWORD:$VPNPASSWORD /Hub:VPN /cmd UserCreate
 	VPNPASSWORD=""
 }
