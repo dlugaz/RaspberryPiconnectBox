@@ -53,6 +53,7 @@ setupVPNserver ()
 	
 	sudo /usr/local/vpnserver/vpnserver start
 	
+	echo "##########################################################################"
 	echo "Enter Password for VPN Server Management "
 	read -s VPNPASSWORD
 		
@@ -83,8 +84,9 @@ checkSudo()
 #############################################################################
 # Main
 #############################################################################
-echo rPI ConnectionBOX installation script!
-echo ##########################################################################
+echo "##########################################################################"
+echo "rPI ConnectionBOX installation script!"
+echo "##########################################################################"
 
 checkConnection
 
@@ -110,6 +112,7 @@ curl -s https://install.zerotier.com | sudo bash
 
 
 while true; do
+    echo "##########################################################################"
     read -p "Would you like to connect to zerotier network? " yn
     case $yn in
         [Yy]* ) connectToZerotier; break;;
@@ -119,6 +122,7 @@ while true; do
 done
 
 while true; do
+	echo "##########################################################################"
     read -p "Would you like to connect to hamachi network? " yn
     case $yn in
         [Yy]* ) connectToHamachi; break;;
@@ -128,6 +132,7 @@ while true; do
 done
 
 while true; do
+	echo "##########################################################################"
     read -p "Would you like to change hostname? " yn
     case $yn in
         [Yy]* ) changeHostname; break;;
@@ -136,6 +141,7 @@ while true; do
     esac
 done
 
+echo "##########################################################################"
 read -t 5 -p "Everything done. Rebooting in 5s..."
 
 sudo reboot
