@@ -37,7 +37,7 @@ setupVPNserver ()
 	tar -xf softether-vpnserver-v4.34-9745-rtm-2020.04.05-linux-arm_eabi-32bit.tar.gz
 
 	cd vpnserver/
-	make
+	make i_read_and_agree_the_license_agreement
 	cd ~
 	sudo rm -rf /usr/local/vpnserver
 	sudo mv vpnserver/ /usr/local/
