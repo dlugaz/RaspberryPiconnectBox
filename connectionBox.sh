@@ -71,13 +71,30 @@ changeHostname ()
 	sudo mv ~/hostname /etc/	
 }
 
-checkSudo()
+checkSudo ()
 {
 	LOCALUSER=$(id -u)
 	if [ $LOCALUSER -ne 0 ]
 	  then echo "Please run as root"
 	  exit
 	fi
+}
+
+setupComitUp ()
+{
+	sudo apt install comitup
+	sudo rm /etc/wpa_supplicant/wpa_supplicant.conf
+	sudo systemctl disable systemd-resolved
+	echo "ap_name: connectionBox-<nn>" > comitup.conf
+	sudo mv comitup.conf /etc/
+}
+
+setupZerotier ()
+{
+	cd ~
+	wget https://github.com/dlugaz/RaspberryPiconnectBox/raw/master/InstalationFiles/logmein-hamachi_2.1.0.203-1_armhf.deb
+	sudo apt install ./logmein-hamachi_2.1.0.203-1_armhf.deb
+	curl -s https://install.zerotier.com | sudo bash
 }
 
 
@@ -92,23 +109,25 @@ checkConnection
 
 checkSudo
 
-echo Setup Password for this device
-passwd
+while true; do
+	echo "##########################################################################"
+    read -p "Would you like to change password (recommended) " yn
+    case $yn in
+        [Yy]* ) passwd; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
 sudo rfkill unblock 0
 sudo apt update
 sudo apt -y upgrade
-sudo apt install comitup
-sudo rm /etc/wpa_supplicant/wpa_supplicant.conf
-sudo systemctl disable systemd-resolved
-echo "ap_name: connectionBox-<nn>" > comitup.conf
-sudo mv comitup.conf /etc/
+
+setupComitUp
 
 setupVPNserver
 
-cd ~
-wget https://github.com/dlugaz/RaspberryPiconnectBox/raw/master/InstalationFiles/logmein-hamachi_2.1.0.203-1_armhf.deb
-sudo apt install ./logmein-hamachi_2.1.0.203-1_armhf.deb
-curl -s https://install.zerotier.com | sudo bash
+setupZerotier
 
 
 while true; do
