@@ -75,7 +75,7 @@ setupVPNserver ()
 	echo "You are about to create user that will be used to connect to VPN"
 	echo "Remember the Username and Password"
 	echo "##########################################################################"
-	echo "Username:"
+	echo "Enter Username:"
 	read VPNUSERNAME
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /PASSWORD:$VPNPASSWORD /Hub:VPN /cmd UserCreate $VPNUSERNAME
 	sudo /usr/local/vpnserver/vpncmd localhost /SERVER /PASSWORD:$VPNPASSWORD /Hub:VPN /cmd UserPasswordSet $VPNUSERNAME
