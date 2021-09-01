@@ -22,7 +22,8 @@ checkConnection ()
 	if [ $? -eq 0 ]; then
 		return 1;
 	else
-		return 0;
+		echo "This script requires internet connection!"
+		exit
 	fi
 }
 
@@ -72,7 +73,8 @@ changeHostname ()
 
 checkSudo()
 {
-	if [ id -u -ne 0 ]
+	LOCALUSER=$(id -u)
+	if [$LOCALUSER -ne 0 ]
 	  then echo "Please run as root"
 	  exit
 	fi
@@ -89,10 +91,6 @@ checkConnection
 
 checkSudo
 
-if [ $? -eq 0 ]; then
-		echo "This script requires internet connection!"
-		exit
-fi
 echo Setup Password for this device
 passwd
 sudo rfkill unblock 0
