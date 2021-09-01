@@ -74,7 +74,7 @@ changeHostname ()
 checkSudo()
 {
 	LOCALUSER=$(id -u)
-	if [$LOCALUSER -ne 0 ]
+	if [ $LOCALUSER -ne 0 ]
 	  then echo "Please run as root"
 	  exit
 	fi
