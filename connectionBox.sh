@@ -126,6 +126,10 @@ setupHamachi ()
 
 setupZerotier ()
 {
+	echo "##########################################################################"
+	echo "Setting up Zerotier"
+	echo "##########################################################################"
+	echo " "
 	curl -s https://install.zerotier.com | sudo bash
 }
 
