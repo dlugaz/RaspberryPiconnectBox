@@ -43,7 +43,7 @@ If it doesn't find any known network, it creates accesspoint (SSID: connectionBo
 > To initialize SSH create empty file "ssh" on boot partition
     
 2.  Connect to rPI and execute in terminal
-	>  wget https://raw.githubusercontent.com/dlugaz/RaspberryPiconnectBox/master/connectionBox.sh; chmod +x ./connectionBox.sh; ./connectionBox.sh
+	>  wget https://raw.githubusercontent.com/dlugaz/RaspberryPiconnectBox/master/connectionBox.sh; chmod +x ./connectionBox.sh;sudo ./connectionBox.sh
 
 3. Follow the instructions.
     
