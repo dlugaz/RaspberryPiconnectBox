@@ -29,6 +29,10 @@ checkConnection ()
 
 setupVPNserver ()
 {
+	echo "##########################################################################"
+	echo "Setting up Softether VPN Server"
+	echo "##########################################################################"
+	echo " "
 
 	cd ~
 	wget https://github.com/dlugaz/RaspberryPiconnectBox/raw/master/InstalationFiles/softether-vpnserver-v4.34-9745-rtm-2020.04.05-linux-arm_eabi-32bit.tar.gz
@@ -82,6 +86,10 @@ checkSudo ()
 
 setupComitUp ()
 {
+	echo "##########################################################################"
+	echo "Setting up Comit Up"
+	echo "##########################################################################"
+	echo " "
 	sudo apt install comitup
 	sudo rm /etc/wpa_supplicant/wpa_supplicant.conf
 	sudo systemctl disable systemd-resolved
@@ -89,11 +97,20 @@ setupComitUp ()
 	sudo mv comitup.conf /etc/
 }
 
-setupZerotier ()
+setupHamachi ()
 {
+	echo "##########################################################################"
+	echo "Setting up Hamachi"
+	echo "##########################################################################"
+	echo " "
 	cd ~
 	wget https://github.com/dlugaz/RaspberryPiconnectBox/raw/master/InstalationFiles/logmein-hamachi_2.1.0.203-1_armhf.deb
 	sudo apt install ./logmein-hamachi_2.1.0.203-1_armhf.deb
+	
+}
+
+setupZerotier ()
+{
 	curl -s https://install.zerotier.com | sudo bash
 }
 
@@ -131,6 +148,8 @@ setupVPNserver
 
 setupZerotier
 
+setupHamachi
+
 while true; do
 	echo "##########################################################################"
 	echo " "
@@ -164,16 +183,6 @@ while true; do
     esac
 done
 
-while true; do
-	echo "##########################################################################"
-	echo " "
-    read -p "Would you like to change hostname? " yn
-    case $yn in
-        [Yy]* ) changeHostname; break;;
-        [Nn]* ) break;;
-        * ) echo "Please answer yes or no.";;
-    esac
-done
 
 
 echo "##########################################################################"
