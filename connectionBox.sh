@@ -16,6 +16,8 @@ connectToHamachi ()
 	read -p "Input network ID " -r
 	sudo hamachi login
 	sudo hamachi join $REPLY
+	NEWHOSTNAME=$(hostname)
+	sudo hamachi set-nick $NEWHOSTNAME
 	echo hamachi
 }
 
@@ -74,6 +76,7 @@ setupVPNserver ()
 changeHostname ()
 {
 	read -p "What's your new hostname?" -r
+	
 	echo $REPLY > ~/hostname
 	sudo mv ~/hostname /etc/	
 }
@@ -135,7 +138,7 @@ while true; do
 	echo " "
     read -p "Would you like to change password (recommended) " yn
     case $yn in
-        [Yy]* ) passwd; break;;
+        [Yy]* ) passwd pi; break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
